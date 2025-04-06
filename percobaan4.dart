@@ -1,15 +1,21 @@
-import 'dart:io';
-
-void gabunganhuruf(String a, int n) {
-  if (n == 0) {
-    stdout.write('$a ');
-  } else {
-    for (int i = 97; i < 99; i++) {
-      gabunganhuruf(a + String.fromCharCode(i), n - 1);
-    }
-  }
-}
-
-void main() {
-  gabunganhuruf("", 3);
-}
+int binarySearch(List<int> arr, int l, int r, int x) { 
+ if (r >= l) { 
+   int mid = l + (r - l) ~/ 2; 
+   if (arr[mid] == x) return mid; 
+   if (arr[mid] > x) return binarySearch(arr, l, mid - 1, x); 
+   return binarySearch(arr, mid + 1, r, x); 
+ } 
+ return -1; 
+} 
+ 
+void main() { 
+ List<int> arr = [2, 3, 4, 10, 40]; 
+ int x = 10; 
+ int size = arr.length; 
+ int result = binarySearch(arr, 0, size - 1, x); 
+ if (result == -1) { 
+   print("Elemen tidak ada dalam array"); 
+ } else { 
+   print("Elemen ditemukan pada indeks ke : ${result}"); 
+ } 
+} 
